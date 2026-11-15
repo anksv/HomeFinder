@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HomeFinder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>HomeFinder</h1>
+  <input id="search" type="search" placeholder="Search address, district, description…" autofocus>
+  <select id="mode"><option value="">Rent &amp; Buy</option><option value="rent">Rent</option><option value="buy">Buy</option></select>
+  <span id="count"></span>
+</header>
+<main>
+  <table>
+    <thead>
+      <tr id="heads"></tr>
+      <tr id="filters"></tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+</main>
+<div id="overlay" hidden><div id="detail"></div></div>
+<script src="app.js"></script>
+</body>
+</html>
