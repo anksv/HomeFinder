@@ -4,7 +4,10 @@
   "description": "Browse apartments and houses for rent or buy",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "fetch": "node scripts/fetch-kleinanzeigen.js"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  }
 }

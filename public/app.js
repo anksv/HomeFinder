@@ -7,6 +7,7 @@ const COLS = [
 ];
 const state = { all: [], sort: { key: 'price', dir: 1 }, filters: {}, q: '', mode: '' };
 const $ = (id) => document.getElementById(id);
+const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const eur = (n) => n.toLocaleString('de-DE');
 
 // Text columns: substring match. Number columns: "50-80", ">=60", "<1500", or exact "3".
@@ -39,8 +40,8 @@ function renderRows() {
   const rows = visible();
   $('count').textContent = `${rows.length} of ${state.all.length} listings`;
   $('rows').innerHTML = rows.map((l) => `<tr data-id="${l.id}">
-    <td>${l.address}</td><td class="num">${l.size}</td><td class="num">${l.rooms}</td>
-    <td class="num">${eur(l.price)}${l.mode === 'rent' ? ' /mo' : ''}</td><td>${l.district}</td></tr>`).join('');
+    <td>${esc(l.address)}</td><td class="num">${esc(l.size)}</td><td class="num">${esc(l.rooms)}</td>
+    <td class="num">${eur(l.price)}${l.mode === 'rent' ? ' /mo' : ''}</td><td>${esc(l.district)}</td></tr>`).join('');
 }
 
 function renderHead() {
@@ -55,11 +56,11 @@ function renderHead() {
 }
 
 function showDetail(l) {
-  $('detail').innerHTML = `<h2>${l.title}</h2><div>${l.address}</div>
-    <dl><dt>Type</dt><dd>${l.type} for ${l.mode}</dd><dt>Price</dt><dd>€ ${eur(l.price)}${l.mode === 'rent' ? ' per month' : ''}</dd>
-    <dt>Size</dt><dd>${l.size} m²</dd><dt>Rooms</dt><dd>${l.rooms}</dd><dt>District</dt><dd>${l.district}</dd>
-    <dt>Floor</dt><dd>${l.floor ?? '–'}</dd><dt>Available</dt><dd>${l.available}</dd><dt>Source</dt><dd>${l.source}</dd></dl>
-    <p>${l.description}</p><button id="close">Close</button>`;
+  $('detail').innerHTML = `<h2>${esc(l.title)}</h2><div>${esc(l.address)}</div>
+    <dl><dt>Type</dt><dd>${esc(l.type)} for ${esc(l.mode)}</dd><dt>Price</dt><dd>€ ${eur(l.price)}${l.mode === 'rent' ? ' per month' : ''}</dd>
+    <dt>Size</dt><dd>${esc(l.size)} m²</dd><dt>Rooms</dt><dd>${esc(l.rooms)}</dd><dt>District</dt><dd>${esc(l.district)}</dd>
+    <dt>Floor</dt><dd>${esc(l.floor ?? '–')}</dd><dt>Available</dt><dd>${esc(l.available ?? '–')}</dd><dt>Source</dt><dd>${l.url ? `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.source)} ↗</a>` : l.source}</dd></dl>
+    <p>${esc(l.description)}</p><button id="close">Close</button>`;
   $('overlay').hidden = false;
   $('close').onclick = () => ($('overlay').hidden = true);
 }

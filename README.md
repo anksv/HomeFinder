@@ -18,6 +18,9 @@ Opens http://localhost:3000 (set `PORT` to change, `NO_OPEN=1` to skip opening t
 
 ## Data
 
-`data/listings.json` is **sample data**. `data/provider.js` is the single place to plug in real sources
-(immowelt, ImmoScout24, Kleinanzeigen, Neubau). Prefer official APIs or feeds; scraping those sites
-generally violates their terms.
+`npm run fetch` pulls real Berlin listings (rent and buy, ~160) from Kleinanzeigen into `data/listings.json`
+(2.5 s between requests, robots.txt-permitted search pages only). Cards show postcode and district, not street.
+Without that file the app falls back to `data/sample-listings.json`.
+
+immowelt and ImmoScout24 answer automated requests with CAPTCHAs/bot checks, and Neubau was unreachable, so they
+need an official API or partner feed. Add them in `data/provider.js`. Check each site's terms before using scraped data.
