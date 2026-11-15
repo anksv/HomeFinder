@@ -18,9 +18,11 @@ Opens http://localhost:3000 (set `PORT` to change, `NO_OPEN=1` to skip opening t
 
 ## Data
 
-`npm run fetch` pulls real Berlin listings (rent and buy, ~160) from Kleinanzeigen into `data/listings.json`
-(2.5 s between requests, robots.txt-permitted search pages only). Cards show postcode and district, not street.
-Without that file the app falls back to `data/sample-listings.json`.
+`npm run fetch` refreshes real Berlin listings into `data/kleinanzeigen.json` and `data/engelvoelkers.json`
+(`fetch:ka` / `fetch:ev` run one source). The server merges whatever exists; with no file it uses `data/sample-listings.json`.
+
+- **Kleinanzeigen** (~160): robots.txt-permitted search pages, 2.5 s between requests. Cards give postcode and district, no street.
+- **Engel & Völkers** (~90): the four Berlin rent/sale pages (apartments, houses). Each embeds only its newest 35 listings, and the site ignores `?page=N`. Gives neighbourhood, no street. Skips price-on-request. The `/search/` URLs are disallowed by robots.txt and not used.
 
 immowelt and ImmoScout24 answer automated requests with CAPTCHAs/bot checks, and Neubau was unreachable, so they
 need an official API or partner feed. Add them in `data/provider.js`. Check each site's terms before using scraped data.

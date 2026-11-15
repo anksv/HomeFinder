@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "fetch": "node scripts/fetch-kleinanzeigen.js"
+    "fetch": "node scripts/fetch-kleinanzeigen.js; node scripts/fetch-engelvoelkers.js",
+    "fetch:ka": "node scripts/fetch-kleinanzeigen.js",
+    "fetch:ev": "node scripts/fetch-engelvoelkers.js"
   },
   "engines": {
     "node": ">=18"

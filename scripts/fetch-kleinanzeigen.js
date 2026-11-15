@@ -1,4 +1,4 @@
-// Fetches a few result pages of Berlin listings from kleinanzeigen.de and writes data/listings.json.
+// Fetches a few result pages of Berlin listings from kleinanzeigen.de and writes data/kleinanzeigen.json.
 // Polite by design: robots.txt-permitted search pages only, a delay between requests, small page count.
 // Run: npm run fetch   (Node 18+, no dependencies)
 const fs = require('fs');
@@ -54,8 +54,8 @@ function parse(html, src) {
       await sleep(2500);
     }
   }
-  const file = path.join(__dirname, '..', 'data', 'listings.json');
+  const file = path.join(__dirname, '..', 'data', 'kleinanzeigen.json');
   if (!all.size) { console.error('Nothing fetched; leaving existing data untouched.'); process.exit(1); }
   fs.writeFileSync(file, JSON.stringify([...all.values()], null, 2));
-  console.log(`Wrote ${all.size} listings to data/listings.json`);
+  console.log(`Wrote ${all.size} listings to data/kleinanzeigen.json`);
 })();
