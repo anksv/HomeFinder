@@ -4,7 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SOURCES = ['kleinanzeigen.json', 'engelvoelkers.json'];
+const SOURCES = ['kleinanzeigen.json', 'engelvoelkers.json', 'ohnemakler.json'];
 
 async function getListings() {
   const found = SOURCES.map((f) => path.join(__dirname, f)).filter((f) => fs.existsSync(f));

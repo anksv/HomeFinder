@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "fetch": "node scripts/fetch-kleinanzeigen.js; node scripts/fetch-engelvoelkers.js",
+    "fetch": "node scripts/fetch-kleinanzeigen.js; node scripts/fetch-engelvoelkers.js; node scripts/fetch-ohnemakler.js",
     "fetch:ka": "node scripts/fetch-kleinanzeigen.js",
-    "fetch:ev": "node scripts/fetch-engelvoelkers.js"
+    "fetch:ev": "node scripts/fetch-engelvoelkers.js",
+    "fetch:om": "node scripts/fetch-ohnemakler.js"
   },
   "engines": {
     "node": ">=18"
