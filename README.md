@@ -18,12 +18,15 @@ Opens http://localhost:3000 (set `PORT` to change, `NO_OPEN=1` to skip opening t
 
 ## Data
 
-`npm run fetch` refreshes real Berlin listings into `data/kleinanzeigen.json` and `data/engelvoelkers.json` and `data/ohnemakler.json`
-(`fetch:ka` / `fetch:ev` / `fetch:om` run one source). The server merges whatever exists; with no file it uses `data/sample-listings.json`.
+`npm run fetch` refreshes real Berlin listings into `data/kleinanzeigen.json` and `data/engelvoelkers.json` `data/ohnemakler.json` and `data/degewo.json`
+(`fetch:ka` / `fetch:ev` / `fetch:om` / `fetch:dg` run one source). The server merges whatever exists; with no file it uses `data/sample-listings.json`.
 
 - **Kleinanzeigen** (~160): robots.txt-permitted search pages, 2.5 s between requests. Cards give postcode and district, no street.
 - **Engel & Völkers** (~90): the four Berlin rent/sale pages (apartments, houses). Each embeds only its newest 35 listings, and the site ignores `?page=N`. Gives neighbourhood, no street. Skips price-on-request. The `/search/` URLs are disallowed by robots.txt and not used.
 - **ohne-makler.net** (~210): private, commission-free offers from the `/immobilien/...` Berlin category pages (paginated with `?page=N`). Its robots.txt disallows `/immobilie/list/`, which is not used. Gives postcode and district, no street.
+- **degewo** (~70): Berlin municipal housing company, rentals only, with street address and warm rent. Many need a WBS (housing entitlement certificate), noted in the description. The site's pagination repeats some flats, so fewer unique flats come back than its "97 results".
+
+Gewobag renders its offers with JavaScript (nothing in the static HTML) and HOWOGE loads them from a JSON endpoint its robots.txt disallows, so neither is fetched.
 
 immowelt and ImmoScout24 answer automated requests with CAPTCHAs/bot checks, and Neubau was unreachable, so they
 need an official API or partner feed. Add them in `data/provider.js`. Check each site's terms before using scraped data.
