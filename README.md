@@ -42,12 +42,28 @@ For-sale listings show a "Rented" row: **Yes** (currently let, so no vacant poss
 bezugsfrei) or **Unknown**. Kleinanzeigen ads are read from the ad page ("Aktuell vermietet"); other sources fall back to
 keyword detection in the title/description (`data/rented.js`), so "Unknown" there can still be rented.
 
-## Sites checked and not used
+## Websites not covered
 
-Stonehedge (all flats are in Strausberg, outside Berlin), Gewobag/GESOBAU/Stadt und Land/berlinovo/Deutsche Wohnen/Vonovia/Bonava (listings are rendered by JavaScript), immosuchmaschine and von Poll (robots.txt disallows `/`), immowelt/ImmoScout24/wohnungsboerse/immonet/immobilien.de/neubaukompass (bot protection), HOWOGE (disallowed JSON endpoint).
+Checked in November 2026 and left out. "Scrapable" means robots.txt allows it; "not usable" means no listing data could be read without breaking the site's rules or its protection.
+
+| Site | Why it is not covered |
+| --- | --- |
+| immowelt | CAPTCHA / bot challenge; robots.txt also disallows the search URLs |
+| ImmoScout24, wohnungsboerse, immonet | Bot protection (401/403) or redirect to ImmoScout24 |
+| immobilien.de, neubaukompass, McMakler, inberlinwohnen.de, wohnen-berlin.de | Bot protection (403) |
+| Neubau, Sotheby's, Ziegert, Rubin, Homelike, immotop, Zuhause and a few more | Did not respond |
+| HOWOGE | Its JSON endpoint is disallowed in robots.txt |
+| Gewobag, GESOBAU, Stadt und Land, berlinovo, Deutsche Wohnen, Vonovia, Bonava | Listings are rendered by JavaScript; no readable HTML or sitemap URLs |
+| Grossmann & Berger, DAHLER | Listings load by JavaScript; the sitemap has no ad URLs |
+| thinkimmo | Client-rendered; data comes from an undocumented API |
+| immosuchmaschine, von Poll, WG-Gesucht, immopool, kalaydo | robots.txt disallows `/` |
+| nebenan.de | robots.txt disallows `/feed`; neighbour posts are not listings |
+| Stonehedge | All its flats are in Strausberg, outside Berlin |
+| cohousing-berlin.de | Building-group projects, with no price, size or rooms per flat |
+| Wunderflats, Homeday, Hausgold, Heimstaden, Interboden | Not checked in depth (furnished short lets, or no Berlin listings found) |
+
+Not a site problem but also missing: rentals only partly (WBS-only flats and many landlords are not covered), and rental prices are a mix of warm and cold rent depending on the source.
 
 ## Price analysis
 
 The detail view says whether a for-sale apartment is priced below, in line with, or above the local average. It compares the price per m² with the average asking price of existing apartments in the same neighbourhood (`data/market.json`, from guthmann.estate Market Intelligence; refresh with `npm run fetch:market`). In line means within 10%; above is up to 25% over; well above is more. Houses, new builds, rentals (the sources quote warm rent, the benchmark is net cold rent) and neighbourhoods without data get no verdict.
-
-Also checked and not usable: Grossmann & Berger and DAHLER (listings load by JavaScript, no ad URLs in the sitemap), WG-Gesucht, immopool and kalaydo (robots.txt disallows `/`), McMakler and inberlinwohnen.de (403), thinkimmo (client-rendered, undocumented API).
