@@ -27,6 +27,7 @@ Opens http://localhost:3000 (set `PORT` to change, `NO_OPEN=1` to skip opening t
 - **degewo** (~70): Berlin municipal housing company, rentals only, with street address and warm rent. Many need a WBS (housing entitlement certificate), noted in the description. The site's pagination repeats some flats, so fewer unique flats come back than its "97 results".
 - **WBM** (6 right now): Berlin municipal housing company, rentals with street address and warm rent; many need a WBS.
 - **ACCENTRO** (~130): Berlin condominiums for sale. Its list does not paginate, so ad URLs come from the sitemap and each ad is read once (~6 min). Gives street address, price and an explicit "Vermietet" flag.
+- **Rasmussen Immobilien** (~6): Berlin apartments for sale from a small local agent. robots.txt only blocks `/wp-admin/`; the list has no pagination, so each ad is read once (seconds). Commercial units, ads outside Berlin and ads without a size are skipped.
 
 Gewobag renders its offers with JavaScript (nothing in the static HTML) and HOWOGE loads them from a JSON endpoint its robots.txt disallows, so neither is fetched.
 

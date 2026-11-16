@@ -5,13 +5,14 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "fetch": "node scripts/fetch-kleinanzeigen.js; node scripts/fetch-engelvoelkers.js; node scripts/fetch-ohnemakler.js; node scripts/fetch-degewo.js; node scripts/fetch-wbm.js; node scripts/fetch-accentro.js",
+    "fetch": "node scripts/fetch-kleinanzeigen.js; node scripts/fetch-engelvoelkers.js; node scripts/fetch-ohnemakler.js; node scripts/fetch-degewo.js; node scripts/fetch-wbm.js; node scripts/fetch-accentro.js; node scripts/fetch-rasmussen.js",
     "fetch:ka": "node scripts/fetch-kleinanzeigen.js",
     "fetch:ev": "node scripts/fetch-engelvoelkers.js",
     "fetch:om": "node scripts/fetch-ohnemakler.js",
     "fetch:dg": "node scripts/fetch-degewo.js",
     "fetch:wbm": "node scripts/fetch-wbm.js",
-    "fetch:ac": "node scripts/fetch-accentro.js"
+    "fetch:ac": "node scripts/fetch-accentro.js",
+    "fetch:ras": "node scripts/fetch-rasmussen.js"
   },
   "engines": {
     "node": ">=18"
