@@ -23,3 +23,9 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; }
 #detail dt { color: #6b7686; }
 #detail dd { margin: 0; }
 #detail button { padding: 8px 16px; border: 0; border-radius: 6px; background: #12355b; color: #fff; cursor: pointer; }
+.analysis { margin: 12px 0; padding: 10px 12px; border-radius: 8px; border-left: 4px solid #999; background: #f4f4f4; font-size: 14px; }
+.analysis.good { border-color: #2e9d57; background: #eaf7ef; }
+.analysis.fair { border-color: #3a7bd5; background: #eaf1fb; }
+.analysis.high { border-color: #e0922f; background: #fdf3e4; }
+.analysis.bad { border-color: #d64545; background: #fbeaea; }
+.analysis .muted, .analysis.muted { color: #666; font-size: 12px; margin-top: 4px; }

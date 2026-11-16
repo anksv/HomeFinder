@@ -55,11 +55,28 @@ function renderHead() {
   }
 }
 
+const VERDICTS = {
+  below: ['Below the local average', 'good'], fair: ['In line with the local average', 'fair'],
+  above: ['Above the local average', 'high'], 'far-above': ['Well above the local average', 'bad'],
+};
+
+function analysisHtml(l) {
+  const a = l.analysis;
+  if (!a) return l.mode === 'buy' ? '<p class="analysis muted">No price benchmark for this listing (houses, new builds and some areas are not covered).</p>' : '';
+  const [label, cls] = VERDICTS[a.verdict];
+  const diff = `${a.diffPct > 0 ? '+' : ''}${a.diffPct}%`;
+  return `<div class="analysis ${cls}"><strong>${label}</strong> (${diff})
+    <div>This flat: € ${eur(Math.round(a.ppm2))}/m² · average asking price in ${esc(a.area)}: € ${eur(a.benchmark)}/m²${a.transaction ? ` · actual sales: € ${eur(a.transaction)}/m²` : ''}</div>
+    ${l.rented === true ? '<div class="muted">Rented flats usually sell below vacant ones, so compare with care.</div>' : ''}
+    <div class="muted">Existing apartments, as of ${esc(a.asOf)}. Source: guthmann.estate Market Intelligence.</div></div>`;
+}
+
 function showDetail(l) {
   $('detail').innerHTML = `<h2>${esc(l.title)}</h2><div>${esc(l.address)}</div>
     <dl><dt>Type</dt><dd>${esc(l.type)} for ${esc(l.mode)}</dd><dt>Price</dt><dd>€ ${eur(l.price)}${l.mode === 'rent' ? ' per month' : ''}</dd>
     <dt>Size</dt><dd>${esc(l.size)} m²</dd><dt>Rooms</dt><dd>${esc(l.rooms)}</dd><dt>District</dt><dd>${esc(l.district)}</dd>
     <dt>Rented</dt><dd>${l.rented === true ? '<strong>Yes, currently rented</strong>' : l.rented === false ? 'No, vacant' : l.mode === 'buy' ? 'Unknown' : '–'}</dd><dt>Floor</dt><dd>${esc(l.floor ?? '–')}</dd><dt>Available</dt><dd>${esc(l.available ?? '–')}</dd><dt>Source</dt><dd>${l.url ? `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.source)} ↗</a>` : l.source}</dd></dl>
+    ${analysisHtml(l)}
     <p>${esc(l.description)}</p><button id="close">Close</button>`;
   $('overlay').hidden = false;
   $('close').onclick = () => ($('overlay').hidden = true);

@@ -1,0 +1,638 @@
+{
+  "source": "guthmann.estate Market Intelligence (Bestandswohnungen)",
+  "fetched": "2026-11-16",
+  "bezirke": {
+    "mitte": {
+      "transaction": 6490,
+      "offer": 6410,
+      "rent": 21
+    },
+    "friedrichshain-kreuzberg": {
+      "transaction": 5760,
+      "offer": 6140,
+      "rent": 21
+    },
+    "pankow": {
+      "transaction": 5410,
+      "offer": 5930,
+      "rent": 18
+    },
+    "charlottenburg-wilmersdorf": {
+      "transaction": 5690,
+      "offer": 6140,
+      "rent": 20
+    },
+    "spandau": {
+      "transaction": 3360,
+      "offer": 3850,
+      "rent": 13
+    },
+    "steglitz-zehlendorf": {
+      "transaction": 4620,
+      "offer": 5210,
+      "rent": 17
+    },
+    "tempelhof-schoeneberg": {
+      "transaction": 4630,
+      "offer": 5290,
+      "rent": 16
+    },
+    "neukoelln": {
+      "transaction": 4800,
+      "offer": 4970,
+      "rent": 15
+    },
+    "treptow-koepenick": {
+      "transaction": 4240,
+      "offer": 4620,
+      "rent": 16
+    },
+    "marzahn-hellersdorf": {
+      "transaction": 3910,
+      "offer": 4010,
+      "rent": 14
+    },
+    "lichtenberg": {
+      "transaction": 4130,
+      "offer": 4910,
+      "rent": 16
+    },
+    "reinickendorf": {
+      "transaction": 3740,
+      "offer": 4160,
+      "rent": 14
+    }
+  },
+  "ortsteile": {
+    "Mitte": {
+      "bezirk": "mitte",
+      "transaction": 8360,
+      "offer": 7200,
+      "rent": 24
+    },
+    "Moabit": {
+      "bezirk": "mitte",
+      "transaction": 4820,
+      "offer": 5510,
+      "rent": 20
+    },
+    "Hansaviertel": {
+      "bezirk": "mitte",
+      "transaction": 5550,
+      "offer": 6850,
+      "rent": 23
+    },
+    "Tiergarten": {
+      "bezirk": "mitte",
+      "transaction": 6740,
+      "offer": 7790,
+      "rent": 23
+    },
+    "Wedding": {
+      "bezirk": "mitte",
+      "transaction": 4110,
+      "offer": 4670,
+      "rent": 16
+    },
+    "Gesundbrunnen": {
+      "bezirk": "mitte",
+      "transaction": 4520,
+      "offer": 5130,
+      "rent": 17
+    },
+    "Friedrichshain": {
+      "bezirk": "friedrichshain-kreuzberg",
+      "transaction": 5780,
+      "offer": 6130,
+      "rent": 22
+    },
+    "Kreuzberg": {
+      "bezirk": "friedrichshain-kreuzberg",
+      "transaction": 5730,
+      "offer": 6170,
+      "rent": 20
+    },
+    "Prenzlauer Berg": {
+      "bezirk": "pankow",
+      "transaction": 6030,
+      "offer": 6560,
+      "rent": 20
+    },
+    "Weißensee": {
+      "bezirk": "pankow",
+      "transaction": 4490,
+      "offer": 5250,
+      "rent": 16
+    },
+    "Heinersdorf": {
+      "bezirk": "pankow",
+      "transaction": 4550,
+      "offer": 4610,
+      "rent": 18
+    },
+    "Karow": {
+      "bezirk": "pankow",
+      "transaction": 2140,
+      "offer": 4600,
+      "rent": 13
+    },
+    "Stadtrandsiedlung Malchow": {
+      "bezirk": "pankow",
+      "transaction": null,
+      "offer": null,
+      "rent": null
+    },
+    "Pankow": {
+      "bezirk": "pankow",
+      "transaction": 4980,
+      "offer": 5960,
+      "rent": 18
+    },
+    "Blankenfelde": {
+      "bezirk": "pankow",
+      "transaction": null,
+      "offer": null,
+      "rent": 15
+    },
+    "Buch": {
+      "bezirk": "pankow",
+      "transaction": 3670,
+      "offer": 4170,
+      "rent": 12
+    },
+    "Französisch Buchholz": {
+      "bezirk": "pankow",
+      "transaction": 3880,
+      "offer": 4660,
+      "rent": 15
+    },
+    "Niederschönhausen": {
+      "bezirk": "pankow",
+      "transaction": 4440,
+      "offer": 4810,
+      "rent": 17
+    },
+    "Rosenthal": {
+      "bezirk": "pankow",
+      "transaction": 3770,
+      "offer": 4360,
+      "rent": 16
+    },
+    "Wilhelmsruh": {
+      "bezirk": "pankow",
+      "transaction": 3810,
+      "offer": 4480,
+      "rent": 15
+    },
+    "Charlottenburg": {
+      "bezirk": "charlottenburg-wilmersdorf",
+      "transaction": 5800,
+      "offer": 6170,
+      "rent": 20
+    },
+    "Wilmersdorf": {
+      "bezirk": "charlottenburg-wilmersdorf",
+      "transaction": 5880,
+      "offer": 6240,
+      "rent": 21
+    },
+    "Schmargendorf": {
+      "bezirk": "charlottenburg-wilmersdorf",
+      "transaction": 4830,
+      "offer": 6040,
+      "rent": 20
+    },
+    "Grunewald": {
+      "bezirk": "charlottenburg-wilmersdorf",
+      "transaction": 5120,
+      "offer": 7010,
+      "rent": 21
+    },
+    "Westend": {
+      "bezirk": "charlottenburg-wilmersdorf",
+      "transaction": 4800,
+      "offer": 5290,
+      "rent": 17
+    },
+    "Charlottenburg-Nord": {
+      "bezirk": "charlottenburg-wilmersdorf",
+      "transaction": 3800,
+      "offer": null,
+      "rent": null
+    },
+    "Halensee": {
+      "bezirk": "charlottenburg-wilmersdorf",
+      "transaction": 6140,
+      "offer": 6380,
+      "rent": 19
+    },
+    "Spandau": {
+      "bezirk": "spandau",
+      "transaction": 3330,
+      "offer": 3820,
+      "rent": 13
+    },
+    "Haselhorst": {
+      "bezirk": "spandau",
+      "transaction": 2930,
+      "offer": 3930,
+      "rent": 14
+    },
+    "Siemensstadt": {
+      "bezirk": "spandau",
+      "transaction": 3500,
+      "offer": 4200,
+      "rent": 13
+    },
+    "Staaken": {
+      "bezirk": "spandau",
+      "transaction": 3630,
+      "offer": 3920,
+      "rent": 12
+    },
+    "Gatow": {
+      "bezirk": "spandau",
+      "transaction": null,
+      "offer": 5010,
+      "rent": 16
+    },
+    "Kladow": {
+      "bezirk": "spandau",
+      "transaction": 4530,
+      "offer": 4590,
+      "rent": 17
+    },
+    "Hakenfelde": {
+      "bezirk": "spandau",
+      "transaction": 3040,
+      "offer": 3940,
+      "rent": 14
+    },
+    "Falkenhagener Feld": {
+      "bezirk": "spandau",
+      "transaction": 3240,
+      "offer": 3430,
+      "rent": 10
+    },
+    "Wilhelmstadt": {
+      "bezirk": "spandau",
+      "transaction": 3360,
+      "offer": 3830,
+      "rent": 12
+    },
+    "Steglitz": {
+      "bezirk": "steglitz-zehlendorf",
+      "transaction": 4840,
+      "offer": 5220,
+      "rent": 18
+    },
+    "Lichterfelde": {
+      "bezirk": "steglitz-zehlendorf",
+      "transaction": 4410,
+      "offer": 5160,
+      "rent": 15
+    },
+    "Lankwitz": {
+      "bezirk": "steglitz-zehlendorf",
+      "transaction": 3870,
+      "offer": 4470,
+      "rent": 14
+    },
+    "Zehlendorf": {
+      "bezirk": "steglitz-zehlendorf",
+      "transaction": 4370,
+      "offer": 4980,
+      "rent": 17
+    },
+    "Dahlem": {
+      "bezirk": "steglitz-zehlendorf",
+      "transaction": 7480,
+      "offer": 6800,
+      "rent": 20
+    },
+    "Nikolassee": {
+      "bezirk": "steglitz-zehlendorf",
+      "transaction": 5160,
+      "offer": 5580,
+      "rent": 16
+    },
+    "Wannsee": {
+      "bezirk": "steglitz-zehlendorf",
+      "transaction": 5190,
+      "offer": 5830,
+      "rent": 18
+    },
+    "Schlachtensee": {
+      "bezirk": "steglitz-zehlendorf",
+      "transaction": 5350,
+      "offer": 7320,
+      "rent": 20
+    },
+    "Schöneberg": {
+      "bezirk": "tempelhof-schoeneberg",
+      "transaction": 5060,
+      "offer": 5960,
+      "rent": 20
+    },
+    "Friedenau": {
+      "bezirk": "tempelhof-schoeneberg",
+      "transaction": 4900,
+      "offer": 5860,
+      "rent": 19
+    },
+    "Tempelhof": {
+      "bezirk": "tempelhof-schoeneberg",
+      "transaction": 4590,
+      "offer": 4790,
+      "rent": 16
+    },
+    "Mariendorf": {
+      "bezirk": "tempelhof-schoeneberg",
+      "transaction": 3750,
+      "offer": 4200,
+      "rent": 15
+    },
+    "Marienfelde": {
+      "bezirk": "tempelhof-schoeneberg",
+      "transaction": 3210,
+      "offer": 3960,
+      "rent": 12
+    },
+    "Lichtenrade": {
+      "bezirk": "tempelhof-schoeneberg",
+      "transaction": 3560,
+      "offer": 4080,
+      "rent": 12
+    },
+    "Neukölln": {
+      "bezirk": "neukoelln",
+      "transaction": 5490,
+      "offer": 5310,
+      "rent": 17
+    },
+    "Britz": {
+      "bezirk": "neukoelln",
+      "transaction": 3410,
+      "offer": 4460,
+      "rent": 14
+    },
+    "Buckow": {
+      "bezirk": "neukoelln",
+      "transaction": 3340,
+      "offer": 4030,
+      "rent": 13
+    },
+    "Rudow": {
+      "bezirk": "neukoelln",
+      "transaction": 3330,
+      "offer": 4100,
+      "rent": 14
+    },
+    "Gropiusstadt": {
+      "bezirk": "neukoelln",
+      "transaction": 3480,
+      "offer": 3910,
+      "rent": 10
+    },
+    "Alt-Treptow": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 6230,
+      "offer": 6760,
+      "rent": 20
+    },
+    "Plänterwald": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 4120,
+      "offer": 4640,
+      "rent": 14
+    },
+    "Baumschulenweg": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 4800,
+      "offer": 4560,
+      "rent": 14
+    },
+    "Johannisthal": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 4090,
+      "offer": 4420,
+      "rent": 16
+    },
+    "Niederschöneweide": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 3580,
+      "offer": 4010,
+      "rent": 17
+    },
+    "Altglienicke": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 4350,
+      "offer": 4600,
+      "rent": 15
+    },
+    "Adlershof": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 3910,
+      "offer": 4120,
+      "rent": 17
+    },
+    "Bohnsdorf": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 3030,
+      "offer": 3810,
+      "rent": 15
+    },
+    "Oberschöneweide": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 4540,
+      "offer": 4610,
+      "rent": 17
+    },
+    "Köpenick": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 4120,
+      "offer": 4600,
+      "rent": 15
+    },
+    "Friedrichshagen": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 6050,
+      "offer": 5370,
+      "rent": 14
+    },
+    "Rahnsdorf": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 3540,
+      "offer": 4390,
+      "rent": 15
+    },
+    "Grünau": {
+      "bezirk": "treptow-koepenick",
+      "transaction": 3910,
+      "offer": 4810,
+      "rent": 17
+    },
+    "Müggelheim": {
+      "bezirk": "treptow-koepenick",
+      "transaction": null,
+      "offer": 3650,
+      "rent": 15
+    },
+    "Schmöckwitz": {
+      "bezirk": "treptow-koepenick",
+      "transaction": null,
+      "offer": 5370,
+      "rent": 15
+    },
+    "Marzahn": {
+      "bezirk": "marzahn-hellersdorf",
+      "transaction": 3340,
+      "offer": 4040,
+      "rent": 12
+    },
+    "Biesdorf": {
+      "bezirk": "marzahn-hellersdorf",
+      "transaction": 4340,
+      "offer": 4420,
+      "rent": 15
+    },
+    "Kaulsdorf": {
+      "bezirk": "marzahn-hellersdorf",
+      "transaction": 6400,
+      "offer": 3820,
+      "rent": 15
+    },
+    "Mahlsdorf": {
+      "bezirk": "marzahn-hellersdorf",
+      "transaction": 4020,
+      "offer": 4320,
+      "rent": 15
+    },
+    "Hellersdorf": {
+      "bezirk": "marzahn-hellersdorf",
+      "transaction": 3230,
+      "offer": 3420,
+      "rent": 13
+    },
+    "Friedrichsfelde": {
+      "bezirk": "lichtenberg",
+      "transaction": 4020,
+      "offer": 4340,
+      "rent": 17
+    },
+    "Karlshorst": {
+      "bezirk": "lichtenberg",
+      "transaction": 3820,
+      "offer": 4590,
+      "rent": 16
+    },
+    "Lichtenberg": {
+      "bezirk": "lichtenberg",
+      "transaction": 4490,
+      "offer": 5110,
+      "rent": 16
+    },
+    "Falkenberg": {
+      "bezirk": "lichtenberg",
+      "transaction": null,
+      "offer": 4460,
+      "rent": 13
+    },
+    "Wartenberg": {
+      "bezirk": "lichtenberg",
+      "transaction": 4850,
+      "offer": 4560,
+      "rent": 16
+    },
+    "Neu-Hohenschönhausen": {
+      "bezirk": "lichtenberg",
+      "transaction": 3210,
+      "offer": null,
+      "rent": null
+    },
+    "Alt-Hohenschönhausen": {
+      "bezirk": "lichtenberg",
+      "transaction": 4630,
+      "offer": null,
+      "rent": null
+    },
+    "Fennpfuhl": {
+      "bezirk": "lichtenberg",
+      "transaction": 3970,
+      "offer": null,
+      "rent": null
+    },
+    "Rummelsburg": {
+      "bezirk": "lichtenberg",
+      "transaction": 5500,
+      "offer": 5520,
+      "rent": 17
+    },
+    "Reinickendorf": {
+      "bezirk": "reinickendorf",
+      "transaction": 3650,
+      "offer": 4070,
+      "rent": 14
+    },
+    "Tegel": {
+      "bezirk": "reinickendorf",
+      "transaction": 4130,
+      "offer": 4210,
+      "rent": 14
+    },
+    "Konradshöhe": {
+      "bezirk": "reinickendorf",
+      "transaction": null,
+      "offer": 4700,
+      "rent": 16
+    },
+    "Heiligensee": {
+      "bezirk": "reinickendorf",
+      "transaction": 3510,
+      "offer": 4210,
+      "rent": 15
+    },
+    "Frohnau": {
+      "bezirk": "reinickendorf",
+      "transaction": 3380,
+      "offer": 4490,
+      "rent": 16
+    },
+    "Hermsdorf": {
+      "bezirk": "reinickendorf",
+      "transaction": 4730,
+      "offer": 4430,
+      "rent": 16
+    },
+    "Waidmannslust": {
+      "bezirk": "reinickendorf",
+      "transaction": 4000,
+      "offer": 4560,
+      "rent": 10
+    },
+    "Lübars": {
+      "bezirk": "reinickendorf",
+      "transaction": 3180,
+      "offer": 4110,
+      "rent": 14
+    },
+    "Wittenau": {
+      "bezirk": "reinickendorf",
+      "transaction": 3740,
+      "offer": 4040,
+      "rent": 14
+    },
+    "Märkisches Viertel": {
+      "bezirk": "reinickendorf",
+      "transaction": 2700,
+      "offer": 4040,
+      "rent": 11
+    },
+    "Borsigwalde": {
+      "bezirk": "reinickendorf",
+      "transaction": 3460,
+      "offer": 4300,
+      "rent": 15
+    }
+  }
+}

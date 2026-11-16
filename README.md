@@ -28,6 +28,7 @@ Opens http://localhost:3000 (set `PORT` to change, `NO_OPEN=1` to skip opening t
 - **WBM** (6 right now): Berlin municipal housing company, rentals with street address and warm rent; many need a WBS.
 - **ACCENTRO** (~130): Berlin condominiums for sale. Its list does not paginate, so ad URLs come from the sitemap and each ad is read once (~6 min). Gives street address, price and an explicit "Vermietet" flag.
 - **Rasmussen Immobilien** (~6): Berlin apartments for sale from a small local agent. robots.txt only blocks `/wp-admin/`; the list has no pagination, so each ad is read once (seconds). Commercial units, ads outside Berlin and ads without a size are skipped.
+- **Guthmann Estate** (~190): Berlin apartments for sale from a data-driven broker. Ad URLs come from the sitemap, each ad is read once (~8 min). Its "investment apartments" are sold with a tenant and flagged rented.
 
 Gewobag renders its offers with JavaScript (nothing in the static HTML) and HOWOGE loads them from a JSON endpoint its robots.txt disallows, so neither is fetched.
 
@@ -43,3 +44,7 @@ keyword detection in the title/description (`data/rented.js`), so "Unknown" ther
 ## Sites checked and not used
 
 Stonehedge (all flats are in Strausberg, outside Berlin), Gewobag/GESOBAU/Stadt und Land/berlinovo/Deutsche Wohnen/Vonovia/Bonava (listings are rendered by JavaScript), immosuchmaschine and von Poll (robots.txt disallows `/`), immowelt/ImmoScout24/wohnungsboerse/immonet/immobilien.de/neubaukompass (bot protection), HOWOGE (disallowed JSON endpoint).
+
+## Price analysis
+
+The detail view says whether a for-sale apartment is priced below, in line with, or above the local average. It compares the price per m² with the average asking price of existing apartments in the same neighbourhood (`data/market.json`, from guthmann.estate Market Intelligence; refresh with `npm run fetch:market`). In line means within 10%; above is up to 25% over; well above is more. Houses, new builds, rentals (the sources quote warm rent, the benchmark is net cold rent) and neighbourhoods without data get no verdict.
