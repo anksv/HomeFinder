@@ -18,13 +18,15 @@ Opens http://localhost:3000 (set `PORT` to change, `NO_OPEN=1` to skip opening t
 
 ## Data
 
-`npm run fetch` refreshes real Berlin listings into `data/kleinanzeigen.json` and `data/engelvoelkers.json` `data/ohnemakler.json` and `data/degewo.json`
-(`fetch:ka` / `fetch:ev` / `fetch:om` / `fetch:dg` run one source). The server merges whatever exists; with no file it uses `data/sample-listings.json`.
+`npm run fetch` refreshes real Berlin listings into `data/kleinanzeigen.json` and `data/engelvoelkers.json` `data/ohnemakler.json` `data/degewo.json`, `data/wbm.json` and `data/accentro.json`
+(`fetch:ka` / `fetch:ev` / `fetch:om` / `fetch:dg` / `fetch:wbm` / `fetch:ac` run one source). The server merges whatever exists; with no file it uses `data/sample-listings.json`.
 
 - **Kleinanzeigen** (~150): robots.txt-permitted search pages, 2.5 s between requests; for-sale ads are also opened once to read the "currently rented" flag (the fetch takes ~4 min). Cards give postcode and district, no street.
 - **Engel & Völkers** (~90): the four Berlin rent/sale pages (apartments, houses). Each embeds only its newest 35 listings, and the site ignores `?page=N`. Gives neighbourhood, no street. Skips price-on-request. The `/search/` URLs are disallowed by robots.txt and not used.
 - **ohne-makler.net** (~210): private, commission-free offers from the `/immobilien/...` Berlin category pages (paginated with `?page=N`). Its robots.txt disallows `/immobilie/list/`, which is not used. Gives postcode and district, no street.
 - **degewo** (~70): Berlin municipal housing company, rentals only, with street address and warm rent. Many need a WBS (housing entitlement certificate), noted in the description. The site's pagination repeats some flats, so fewer unique flats come back than its "97 results".
+- **WBM** (6 right now): Berlin municipal housing company, rentals with street address and warm rent; many need a WBS.
+- **ACCENTRO** (~130): Berlin condominiums for sale. Its list does not paginate, so ad URLs come from the sitemap and each ad is read once (~6 min). Gives street address, price and an explicit "Vermietet" flag.
 
 Gewobag renders its offers with JavaScript (nothing in the static HTML) and HOWOGE loads them from a JSON endpoint its robots.txt disallows, so neither is fetched.
 
@@ -36,3 +38,7 @@ need an official API or partner feed. Add them in `data/provider.js`. Check each
 For-sale listings show a "Rented" row: **Yes** (currently let, so no vacant possession), **No** (stated vacant, e.g.
 bezugsfrei) or **Unknown**. Kleinanzeigen ads are read from the ad page ("Aktuell vermietet"); other sources fall back to
 keyword detection in the title/description (`data/rented.js`), so "Unknown" there can still be rented.
+
+## Sites checked and not used
+
+Stonehedge (all flats are in Strausberg, outside Berlin), Gewobag/GESOBAU/Stadt und Land/berlinovo/Deutsche Wohnen/Vonovia/Bonava (listings are rendered by JavaScript), immosuchmaschine and von Poll (robots.txt disallows `/`), immowelt/ImmoScout24/wohnungsboerse/immonet/immobilien.de/neubaukompass (bot protection), HOWOGE (disallowed JSON endpoint).
