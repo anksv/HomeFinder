@@ -29,6 +29,7 @@ Opens http://localhost:3000 (set `PORT` to change, `NO_OPEN=1` to skip opening t
 - **ACCENTRO** (~130): Berlin condominiums for sale. Its list does not paginate, so ad URLs come from the sitemap and each ad is read once (~6 min). Gives street address, price and an explicit "Vermietet" flag.
 - **Rasmussen Immobilien** (~6): Berlin apartments for sale from a small local agent. robots.txt only blocks `/wp-admin/`; the list has no pagination, so each ad is read once (seconds). Commercial units, ads outside Berlin and ads without a size are skipped.
 - **Guthmann Estate** (~190): Berlin apartments for sale from a data-driven broker. Ad URLs come from the sitemap, each ad is read once (~8 min). Its "investment apartments" are sold with a tenant and flagged rented.
+- **Berlinhaus** (~24): rentals from a Berlin landlord and property manager. Its sitemap covers several cities and commercial units (~360 ads, ~15 min), so only Berlin apartments are kept. Warm rent; the district comes from the postcode, matched against the other sources.
 
 Gewobag renders its offers with JavaScript (nothing in the static HTML) and HOWOGE loads them from a JSON endpoint its robots.txt disallows, so neither is fetched.
 
@@ -48,3 +49,5 @@ Stonehedge (all flats are in Strausberg, outside Berlin), Gewobag/GESOBAU/Stadt 
 ## Price analysis
 
 The detail view says whether a for-sale apartment is priced below, in line with, or above the local average. It compares the price per m² with the average asking price of existing apartments in the same neighbourhood (`data/market.json`, from guthmann.estate Market Intelligence; refresh with `npm run fetch:market`). In line means within 10%; above is up to 25% over; well above is more. Houses, new builds, rentals (the sources quote warm rent, the benchmark is net cold rent) and neighbourhoods without data get no verdict.
+
+Also checked and not usable: Grossmann & Berger and DAHLER (listings load by JavaScript, no ad URLs in the sitemap), WG-Gesucht, immopool and kalaydo (robots.txt disallows `/`), McMakler and inberlinwohnen.de (403), thinkimmo (client-rendered, undocumented API).
