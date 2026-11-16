@@ -4,12 +4,15 @@
 const fs = require('fs');
 const path = require('path');
 
+const { districtByZip } = require('../data/zipdistrict');
+
 const BASE = 'https://www.wbm.de';
 const UA = 'Mozilla/5.0 (compatible; HomeFinderBot/0.1; personal project)';
 const decode = (s) => s.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&nbsp;/g, ' ');
 const num = (s) => parseFloat(s.replace(/\./g, '').replace(',', '.'));
 
 function parse(html) {
+  const zips = districtByZip();
   const urls = [...new Set([...html.matchAll(/href="(\/wohnungen-berlin\/angebote\/details\/[^"]+)"/g)].map((m) => m[1]))];
   const cells = decode(html.replace(/<(script|style|svg)\b[\s\S]*?<\/\1>/g, '').replace(/<[^>]+>/g, '|')).replace(/\s+/g, ' ').split('|').map((c) => c.trim()).filter(Boolean);
   const out = [];
@@ -23,7 +26,7 @@ function parse(html) {
     const n = out.length;
     out.push({
       id: `wbm-${(urls[n] || cells[i - 2]).split('/').filter(Boolean).pop()}`, title: cells[i - 2], address: cells[i - 1],
-      district: cells[i - 6], type: 'apartment', mode: 'rent', size, rooms, price: num(c), floor: null, available: null,
+      district: zips[(cells[i - 1].match(/\b(\d{5})\b/) || [])[1]] || 'Berlin', type: 'apartment', mode: 'rent', size, rooms, price: num(c), floor: null, available: null,
       source: 'WBM', url: urls[n] ? BASE + urls[n] : `${BASE}/wohnungen-berlin/angebote/`, description: `Warm rent. ${tags.join(', ')}`.trim(),
     });
   });

@@ -7,22 +7,12 @@ const fs = require('fs');
 const path = require('path');
 
 const DATA = path.join(__dirname, '..', 'data');
+const { districtByZip } = require('../data/zipdistrict');
 const UA = 'HomeFinderBot/0.1 (personal project)';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const decode = (s) => s.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#0?39;|&#x27;/g, "'").replace(/&#8211;/g, '-').replace(/&#8230;/g, '…').replace(/&nbsp;/g, ' ');
 const num = (s) => parseFloat(s.replace(/\./g, '').replace(',', '.'));
 const get = (url) => fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'de' } });
-
-function districtByZip() {
-  const counts = {};
-  for (const f of fs.readdirSync(DATA).filter((x) => x.endsWith('.json') && !/^(sample|market|berlinhaus)/.test(x))) {
-    for (const l of JSON.parse(fs.readFileSync(path.join(DATA, f), 'utf8'))) {
-      const zip = (l.address || '').match(/\b(1[0-4]\d{3})\b/)?.[1];
-      if (zip && l.district && l.district !== 'Berlin' && l.district.length < 30) { counts[zip] = counts[zip] || {}; counts[zip][l.district] = (counts[zip][l.district] || 0) + 1; }
-    }
-  }
-  return Object.fromEntries(Object.entries(counts).map(([z, d]) => [z, Object.entries(d).sort((a, b) => b[1] - a[1])[0][0]]));
-}
 
 function parse(html, url, zips) {
   const title = decode((html.match(/<h1[^>]*>([^<]*)/) || [])[1] || '').trim();

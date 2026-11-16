@@ -41,7 +41,7 @@ function renderRows() {
   $('count').textContent = `${rows.length} of ${state.all.length} listings`;
   $('rows').innerHTML = rows.map((l) => `<tr data-id="${l.id}">
     <td>${esc(l.address)}</td><td class="num">${esc(l.size)}</td><td class="num">${esc(l.rooms)}</td>
-    <td class="num">${eur(l.price)}${l.mode === 'rent' ? ' /mo' : ''}</td><td>${esc(l.district)}</td></tr>`).join('');
+    <td class="num">${eur(l.price)}${l.mode === 'rent' ? ' /mo' : ''}${priceArrow(l)}</td><td>${esc(l.district)}</td></tr>`).join('');
 }
 
 function renderHead() {
@@ -59,6 +59,14 @@ const VERDICTS = {
   below: ['Below the local average', 'good'], fair: ['In line with the local average', 'fair'],
   above: ['Above the local average', 'high'], 'far-above': ['Well above the local average', 'bad'],
 };
+
+// red arrow up: priced above the local average, green arrow down: below it (guthmann.estate benchmark); nothing if in line or unknown
+function priceArrow(l) {
+  const a = l.analysis;
+  if (!a || a.verdict === 'fair') return '';
+  const up = a.verdict === 'above' || a.verdict === 'far-above';
+  return ` <span class="arrow ${up ? 'up' : 'down'}" title="${a.diffPct > 0 ? '+' : ''}${a.diffPct}% vs. local average (€ ${eur(a.benchmark)}/m²)">${up ? '▲' : '▼'}</span>`;
+}
 
 function analysisHtml(l) {
   const a = l.analysis;

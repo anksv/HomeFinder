@@ -66,4 +66,6 @@ Not a site problem but also missing: rentals only partly (WBS-only flats and man
 
 ## Price analysis
 
+In the table, a red ▲ next to a price means it is above the local average, a green ▼ means below; no arrow means in line or no benchmark. Hover for the percentage.
+
 The detail view says whether a for-sale apartment is priced below, in line with, or above the local average. It compares the price per m² with the average asking price of existing apartments in the same neighbourhood (`data/market.json`, from guthmann.estate Market Intelligence; refresh with `npm run fetch:market`). In line means within 10%; above is up to 25% over; well above is more. Houses, new builds, rentals (the sources quote warm rent, the benchmark is net cold rent) and neighbourhoods without data get no verdict.
