@@ -69,3 +69,48 @@ Not a site problem but also missing: rentals only partly (WBS-only flats and man
 In the table, a red ▲ next to a price means it is above the local average, a green ▼ means below; no arrow means in line or no benchmark. Hover for the percentage.
 
 The detail view says whether a for-sale apartment is priced below, in line with, or above the local average. It compares the price per m² with the average asking price of existing apartments in the same neighbourhood (`data/market.json`, from guthmann.estate Market Intelligence; refresh with `npm run fetch:market`). In line means within 10%; above is up to 25% over; well above is more. Houses, new builds, rentals (the sources quote warm rent, the benchmark is net cold rent) and neighbourhoods without data get no verdict.
+
+## How to contribute
+
+Contributions are welcome through pull requests. You don't need write access: fork the repo, work on a branch, and open a PR.
+
+1. **Fork** [anksv/HomeFinder](https://github.com/anksv/HomeFinder) with the Fork button on GitHub, then clone your fork:
+   ```bash
+   git clone https://github.com/<your-username>/HomeFinder.git
+   cd HomeFinder
+   git remote add upstream https://github.com/anksv/HomeFinder.git
+   ```
+2. **Branch** from an up-to-date `main`, with a short descriptive name:
+   ```bash
+   git fetch upstream && git checkout -b add-<site>-source upstream/main
+   ```
+3. **Make your change** and run the app (`npm start`) to check it in the browser. There is no build step and no dependencies to install.
+4. **Commit** with a clear message, then push to your fork:
+   ```bash
+   git commit -am "Add <site> source"
+   git push -u origin add-<site>-source
+   ```
+5. **Open a pull request** against `anksv/HomeFinder` `main` (GitHub offers a button after you push). Say what you changed and why, and for a new source include a screenshot or the number of listings it adds. Keep a PR to one change, so it is easy to review. If you hit a merge conflict, rebase on `upstream/main` and push again.
+
+For a bigger idea, open an issue first so we can agree on the approach before you spend time on it.
+
+### Good first contributions
+
+- **A new data source.** Copy a script in `scripts/` (`fetch-rasmussen.js` is the smallest), write the listings to `data/<source>.json` in the shared shape (`id, title, address, district, type, mode, size, rooms, price, floor, available, source, url, description`), add the file to `SOURCES` in `data/provider.js`, an `npm run fetch:<x>` script in `package.json`, and a line in the Data section above.
+- A source from the "Websites not covered" list that now allows access (for example a landlord site with a public JSON feed).
+- Better district matching, more rented-status detection, UI fixes, or a missing benchmark in the price analysis.
+
+### Rules for scrapers
+
+- Only scrape sites whose `robots.txt` allows it. Never bypass a CAPTCHA, a login or other bot protection, and don't use an endpoint the site disallows.
+- Be polite: identify as `HomeFinderBot/0.1 (personal project)`, wait about 2.5 s between requests, and read each page once.
+- Collect listing data only (address, size, rooms, price and so on). No personal data about private people, such as names or contact details of sellers or searchers.
+- Keep it dependency-free (Node 18+ built-ins, `fetch`) and make the script leave existing data untouched if nothing was fetched.
+- Escape scraped text before putting it into the page (`esc()` in `public/app.js`).
+- Never commit secrets, tokens or personal links (some alert links contain a token).
+
+### Before you submit
+
+- `npm start` loads without errors and your listings show in the table and the detail view.
+- If you changed a fetcher, run it once and commit only the JSON of the source you changed, not a refresh of every source.
+- Update this README when you add a source, or when a site turns out not to be usable.
