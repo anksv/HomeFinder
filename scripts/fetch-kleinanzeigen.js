@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const { detectRented } = require('../data/rented');
 const BASE = 'https://www.kleinanzeigen.de';
 const SOURCES = [
   { mode: 'rent', type: 'apartment', slug: 's-wohnung-mieten/berlin', code: 'c203l3331', pages: 3 },
@@ -28,8 +29,11 @@ function parse(html, src) {
     const priceCell = cells.find((c) => /^[\d.,]+ €/.test(c));
     const loc = cells.find((c) => /^\d{5} /.test(c));
     if (!facts || !priceCell || !loc) continue;
-    const size = num(facts.match(/([\d.,]+) m²/)[1]);
-    const rooms = num(facts.match(/([\d.,]+) Zi\./)[1]);
+    const sm = facts.match(/([\d.,]+) m²/);
+    const rm = facts.match(/([\d.,]+) Zi\./);
+    if (!sm || !rm) continue; // unusual card format, skip
+    const size = num(sm[1]);
+    const rooms = num(rm[1]);
     const price = num(priceCell.match(/^([\d.,]+) €/)[1]);
     const titleIdx = cells.indexOf(loc) + 1;
     out.push({
@@ -39,6 +43,22 @@ function parse(html, src) {
     });
   }
   return out;
+}
+
+// Buy listings only: the ad page lists "Aktuell vermietet" among its features and often says so in the text.
+async function addRentedStatus(listing) {
+  try {
+    const res = await fetch(listing.url, { headers: { 'User-Agent': UA, 'Accept-Language': 'de' } });
+    if (!res.ok) return;
+    const text = decode((await res.text()).replace(/<(script|style)[\s\S]*?<\/\1>/g, '').replace(/<[^>]+>/g, '|')).replace(/\s+/g, ' ');
+    const start = text.indexOf(listing.title);
+    const end = text.indexOf('Anzeige melden');
+    const main = start >= 0 && end > start ? text.slice(start, end) : '';
+    // an explicit feature chip wins; otherwise fall back to the wording in the ad
+    listing.rented = /\|Aktuell vermietet\|/.test(main) ? true : detectRented(main);
+  } catch (e) {
+    console.warn(`rented check failed for ${listing.url}: ${e.message}`);
+  }
 }
 
 (async () => {
@@ -53,6 +73,12 @@ function parse(html, src) {
       console.log(`${url} -> ${items.length} listings`);
       await sleep(2500);
     }
+  }
+  const buys = [...all.values()].filter((l) => l.mode === 'buy');
+  for (const [i, l] of buys.entries()) {
+    await addRentedStatus(l);
+    if ((i + 1) % 20 === 0) console.log(`rented check ${i + 1}/${buys.length}`);
+    await sleep(2500);
   }
   const file = path.join(__dirname, '..', 'data', 'kleinanzeigen.json');
   if (!all.size) { console.error('Nothing fetched; leaving existing data untouched.'); process.exit(1); }

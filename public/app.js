@@ -59,7 +59,7 @@ function showDetail(l) {
   $('detail').innerHTML = `<h2>${esc(l.title)}</h2><div>${esc(l.address)}</div>
     <dl><dt>Type</dt><dd>${esc(l.type)} for ${esc(l.mode)}</dd><dt>Price</dt><dd>€ ${eur(l.price)}${l.mode === 'rent' ? ' per month' : ''}</dd>
     <dt>Size</dt><dd>${esc(l.size)} m²</dd><dt>Rooms</dt><dd>${esc(l.rooms)}</dd><dt>District</dt><dd>${esc(l.district)}</dd>
-    <dt>Floor</dt><dd>${esc(l.floor ?? '–')}</dd><dt>Available</dt><dd>${esc(l.available ?? '–')}</dd><dt>Source</dt><dd>${l.url ? `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.source)} ↗</a>` : l.source}</dd></dl>
+    <dt>Rented</dt><dd>${l.rented === true ? '<strong>Yes, currently rented</strong>' : l.rented === false ? 'No, vacant' : l.mode === 'buy' ? 'Unknown' : '–'}</dd><dt>Floor</dt><dd>${esc(l.floor ?? '–')}</dd><dt>Available</dt><dd>${esc(l.available ?? '–')}</dd><dt>Source</dt><dd>${l.url ? `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.source)} ↗</a>` : l.source}</dd></dl>
     <p>${esc(l.description)}</p><button id="close">Close</button>`;
   $('overlay').hidden = false;
   $('close').onclick = () => ($('overlay').hidden = true);
