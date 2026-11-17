@@ -6,7 +6,7 @@ const path = require('path');
 const { detectRented } = require('./rented');
 const { analyze } = require('./analysis');
 
-const SOURCES = ['kleinanzeigen.json', 'engelvoelkers.json', 'ohnemakler.json', 'degewo.json', 'wbm.json', 'accentro.json', 'rasmussen.json', 'guthmann.json', 'berlinhaus.json'];
+const SOURCES = ['kleinanzeigen.json', 'engelvoelkers.json', 'ohnemakler.json', 'degewo.json', 'wbm.json', 'accentro.json', 'rasmussen.json', 'guthmann.json', 'berlinhaus.json', 'escon.json', 'bsk.json'];
 
 async function getListings() {
   const found = SOURCES.map((f) => path.join(__dirname, f)).filter((f) => fs.existsSync(f));

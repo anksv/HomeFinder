@@ -30,6 +30,8 @@ Opens http://localhost:3000 (set `PORT` to change, `NO_OPEN=1` to skip opening t
 - **Rasmussen Immobilien** (~6): Berlin apartments for sale from a small local agent. robots.txt only blocks `/wp-admin/`; the list has no pagination, so each ad is read once (seconds). Commercial units, ads outside Berlin and ads without a size are skipped.
 - **Guthmann Estate** (~190): Berlin apartments for sale from a data-driven broker. Ad URLs come from the sitemap, each ad is read once (~8 min). Its "investment apartments" are sold with a tenant and flagged rented.
 - **Berlinhaus** (~24): rentals from a Berlin landlord and property manager. Its sitemap covers several cities and commercial units (~360 ads, ~15 min), so only Berlin apartments are kept. Warm rent; the district comes from the postcode, matched against the other sources.
+- **ESCON** (~91): Berlin condos for sale from a developer/broker, from its own "Einheiten" list (5 pages, seconds). Shows the district but no street; units let to tenants are flagged rented. The same units are shared via `crm.propstack.de` links, which that host disallows, so only escon-objekte.de is read.
+- **BSK Immobilien** (~73): Berlin apartments for sale (Brandenburg ads are skipped). The list pages (`/P15`, `/P30`, ...) give district, size, rooms, price and a "Vermietet" flag.
 
 Gewobag renders its offers with JavaScript (nothing in the static HTML) and HOWOGE loads them from a JSON endpoint its robots.txt disallows, so neither is fetched.
 
@@ -55,6 +57,8 @@ Checked in November 2026 and left out. "Scrapable" means robots.txt allows it; "
 | HOWOGE | Its JSON endpoint is disallowed in robots.txt |
 | Gewobag, GESOBAU, Stadt und Land, berlinovo, Deutsche Wohnen, Vonovia, Bonava | Listings are rendered by JavaScript; no readable HTML or sitemap URLs |
 | Grossmann & Berger, DAHLER | Listings load by JavaScript; the sitemap has no ad URLs |
+| crm.propstack.de (shared links) | robots.txt disallows everything except `/app`; the same listings are read from the broker's own site where it allows it (ESCON) |
+| AV Immobilien Berlin | Portal is open, but the list shows 8 of 111 properties with no usable pager, the feed has no price or rooms, sizes are bands ("bis 70m²") and most stock is outside Berlin |
 | thinkimmo | Client-rendered; data comes from an undocumented API |
 | immosuchmaschine, von Poll, WG-Gesucht, immopool, kalaydo | robots.txt disallows `/` |
 | nebenan.de | robots.txt disallows `/feed`; neighbour posts are not listings |
